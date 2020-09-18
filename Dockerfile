@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM roundcube/roundcubemail:latest
 
 MAINTAINER antespi@gmail.com
 
@@ -8,7 +8,7 @@ ENV MAILNAME=localdomain.test \
     MAIL_FS_USER=docker \
     MAIL_FS_HOME=/home/docker
 
-RUN set -x; \
+RUN set -ex; \
     apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
     && echo "postfix postfix/mailname string $MAILNAME" | debconf-set-selections \
@@ -42,7 +42,7 @@ ADD entrypoint /usr/local/bin/
 RUN chmod a+rx /usr/local/bin/entrypoint
 
 VOLUME ["/var/mail"]
-EXPOSE 25 143 993
+EXPOSE 25 80 143 993
 
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
-CMD ["tail", "-fn", "0", "/var/log/mail.log"]
+CMD ["/docker-entrypoint.sh", "apache2-foreground"]
