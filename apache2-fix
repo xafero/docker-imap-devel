@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "    \$config['smtp_user'] = '';" >> /var/www/html/config/config.inc.php
+echo "    \$config['smtp_pass'] = '';" >> /var/www/html/config/config.inc.php
+echo "Patched. I guess."
+apache2-foreground

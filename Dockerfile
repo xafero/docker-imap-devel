@@ -44,5 +44,7 @@ RUN chmod a+rx /usr/local/bin/entrypoint
 VOLUME ["/var/mail"]
 EXPOSE 25 80 143 993
 
+ADD apache2-fix /usr/local/bin/
+
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
-CMD ["/docker-entrypoint.sh", "apache2-foreground"]
+CMD ["/docker-entrypoint.sh", "apache2-fix"]
