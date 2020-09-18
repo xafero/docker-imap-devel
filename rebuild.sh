@@ -5,4 +5,4 @@ podman run \
    -e MAILNAME=pepsi.org -e MAIL_ADDRESS=ceo@pepsi.org -e MAIL_PASS=admin \
    -e ROUNDCUBEMAIL_DEFAULT_HOST=127.0.0.1 -e ROUNDCUBEMAIL_SMTP_SERVER=127.0.0.1 \
    -e ROUNDCUBEMAIL_SMTP_PORT=25 -e ROUNDCUBEMAIL_UPLOAD_MAX_FILESIZE=17M \
-   --name imapdv -it --rm imapdevil
+   --name imapdv -d --rm imapdevil
